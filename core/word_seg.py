@@ -1,6 +1,6 @@
 import numpy as np
 from sklearn.cluster import KMeans
-from preprocessor.cluster import find_optimal_cluster
+from core.cluster import find_optimal_cluster
 
 def find_num_lines(words):
     y_coords = [ word["y"] for word in words ]

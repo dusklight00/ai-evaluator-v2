@@ -1,4 +1,5 @@
 from word_detector import prepare_img, detect, sort_line
+from utils import crop_image
 
 def detect_words(image):
     prepared_image = prepare_img(image, 200)
@@ -8,7 +9,7 @@ def detect_words(image):
         kernel_size=25,
         sigma=11,
         theta=7,
-        min_area=100
+        min_area=50
     )
 
     line = sort_line(detections)[0]
@@ -29,3 +30,10 @@ def detect_words(image):
         rectangles.append(rect)
     
     return rectangles
+
+def extract_word(image, word):
+    x = word["x"]
+    y = word["y"]
+    width = word["width"]
+    height = word["height"]
+    return crop_image(image, x, y, width, height)

@@ -1,12 +1,12 @@
-import numpy as np
-from sklearn.cluster import KMeans
-from sklearn.metrics import silhouette_score, davies_bouldin_score
-from word_detector import prepare_img, detect, sort_line
-import pytesseract
-import base64
 import cv2
-import requests
 import json
+import base64
+import requests
+import numpy as np
+import pytesseract
+from sklearn.cluster import KMeans
+from word_detector import prepare_img, detect, sort_line
+from sklearn.metrics import silhouette_score, davies_bouldin_score
 
 class EVALUATOR:
     

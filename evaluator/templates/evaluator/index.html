@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=content-width, initial-scale=1.0" />
+    <title>AI EVALUATOR</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'static/style.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>AI EVALUATOR</h1>
+      </div>
+      <div class="content">
+        <form
+          action="{% url 'evaluate' %}"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <input type="file" name="file" id="file" />
+          <input type="submit" value="Evaluate" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=content-width, initial-scale=1.0" />
+    <title>AI EVALUATOR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      body {
+        background: #303443ff;
+        width: 100vw;
+        height: 100vh;
+      }
+      .header h1 {
+        text-align: center;
+        padding: 30px;
+      }
+      .content {
+        width: 100%;
+        height: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .content form {
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .content input {
+        width: 80%;
+        height: 50px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        padding: 0 10px;
+        font-size: 1.2rem;
+      }
+      .content button {
+        width: 100px;
+        height: 50px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        background: #6366f1ff;
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-left: 10px;
+      }
+      .result {
+        width: 100%;
+        height: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color: #fff;
+      }
+
+    </style>
+  </head>
+  <body>
+    {% csrf_token %}
+    <div class="container">
+      <div class="header">
+        <h1>AI EVALUATOR</h1>
+      </div>
+      <div class="content">
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="text" name="image_url" placeholder="Enter Image URL" />
+          <button type="submit">Evaluate</button>
+        </form>
+      </div>
+      <div class="result">
+        {% if result %}
+        <h2>Result: {{ result }}</h2>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
